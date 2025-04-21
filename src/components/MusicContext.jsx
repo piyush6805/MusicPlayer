@@ -41,28 +41,36 @@ export function MusicProvider({ children }) {
     setIsPlaying(true);
   };
 
-  const pauseSong = () => {
-    setIsPlaying(false);
-  };
-
-  const resumeSong = () => {
+  const togglePlay = () => {
     if (currentSong) {
-      setIsPlaying(true);
+      setIsPlaying(!isPlaying);
     }
   };
 
-  const handleSongEnd = () => {
-    // If there are songs in the playlist, play the next one
+  const nextSong = (shuffle = false) => {
     if (playlist.length > 0 && currentSong) {
       const currentIndex = playlist.findIndex(song => song.id === currentSong.id);
-      if (currentIndex > -1 && currentIndex < playlist.length - 1) {
-        playSong(playlist[currentIndex + 1]);
-      } else {
-        // If it's the last song, stop playing
-        setIsPlaying(false);
+      if (currentIndex > -1) {
+        let nextIndex;
+        if (shuffle) {
+          // Get random index excluding current song
+          nextIndex = Math.floor(Math.random() * (playlist.length - 1));
+          if (nextIndex >= currentIndex) nextIndex += 1;
+        } else {
+          nextIndex = (currentIndex + 1) % playlist.length;
+        }
+        playSong(playlist[nextIndex]);
       }
-    } else {
-      setIsPlaying(false);
+    }
+  };
+
+  const prevSong = () => {
+    if (playlist.length > 0 && currentSong) {
+      const currentIndex = playlist.findIndex(song => song.id === currentSong.id);
+      if (currentIndex > -1) {
+        const prevIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+        playSong(playlist[prevIndex]);
+      }
     }
   };
 
@@ -80,6 +88,11 @@ export function MusicProvider({ children }) {
     localStorage.setItem('musicly-playlist', JSON.stringify(newPlaylist));
   };
 
+  const clearPlaylist = () => {
+    setPlaylist([]);
+    localStorage.removeItem('musicly-playlist');
+  };
+
   const value = {
     searchResults,
     currentSong,
@@ -88,11 +101,12 @@ export function MusicProvider({ children }) {
     playlist,
     searchSongs,
     playSong,
-    pauseSong,
-    resumeSong,
-    handleSongEnd,
+    togglePlay,
+    nextSong,
+    prevSong,
     addToPlaylist,
-    removeFromPlaylist
+    removeFromPlaylist,
+    clearPlaylist
   };
 
   return (

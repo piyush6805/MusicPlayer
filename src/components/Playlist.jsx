@@ -1,5 +1,4 @@
 import { useMusic } from './MusicContext';
-import MusicPlayer from './MusicPlayer';
 import { Link } from 'react-router-dom';
 import './Playlist.css';
 
@@ -185,8 +184,6 @@ export default function Playlist() {
           </Link>
         </div>
       )}
-      
-      <MusicPlayer />
     </div>
   );
 }

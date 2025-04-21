@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useMusic } from './MusicContext';
-import MusicPlayer from './MusicPlayer';
 import './Browse.css';
 
 export default function Browse() {
@@ -109,8 +108,6 @@ export default function Browse() {
           <p>Try different keywords or check your spelling</p>
         </div>
       )}
-
-      <MusicPlayer />
     </div>
   );
 }

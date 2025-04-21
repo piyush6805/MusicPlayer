@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useMusic } from './MusicContext';
-import MusicPlayer from './MusicPlayer';
 import './Home.css';
 
 const FEATURED_ARTISTS = [
@@ -204,8 +203,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <MusicPlayer />
     </div>
   );
 }

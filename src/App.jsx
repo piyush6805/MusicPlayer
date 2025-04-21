@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar'
@@ -8,6 +6,7 @@ import Home from './components/Home'
 import Browse from './components/Browse'
 import Playlist from './components/Playlist'
 import { MusicProvider } from './components/MusicContext'
+import MusicPlayer from './components/MusicPlayer'
 
 function App() {
   return (
@@ -22,6 +21,7 @@ function App() {
               <Route path="/playlist" element={<Playlist/>} />
             </Routes>
           </main>
+          <MusicPlayer />
         </div>
       </BrowserRouter>
     </MusicProvider>

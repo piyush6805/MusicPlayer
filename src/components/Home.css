@@ -124,19 +124,26 @@
   gap: 1rem;
 }
 
-.artist-card {
-  min-width: 150px;
-  margin-right: 1rem;
+/* // Common card styles */
+.card-base {
   background: var(--color-bg-secondary);
   border-radius: 8px;
-  padding: 1rem;
+  overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.artist-card:hover {
+.card-base:hover {
   background: var(--color-bg-tertiary);
   transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.artist-card {
+  composes: card-base;
+  min-width: 150px;
+  margin-right: 1rem;
+  padding: 1rem;
 }
 
 .artist-button {
@@ -181,18 +188,10 @@
 }
 
 .song-card {
+  composes: card-base;
   min-width: 180px;
-  margin-right: 1rem;
-  background: var(--color-bg-secondary);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.song-card:hover {
-  background: var(--color-bg-tertiary);
-  transform: translateY(-5px);
+  max-width: 200px;
+  margin-right: 0.5rem;
 }
 
 .song-image-container {
@@ -227,11 +226,13 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
 }
 
 .song-card:hover .song-overlay {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .play-button {
@@ -257,22 +258,25 @@
   padding: 1rem;
 }
 
-.song-name {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin-bottom: 0.25rem;
+/* // Common text truncation */
+.text-truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.song-name {
+  composes: text-truncate;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
 .song-artist {
+  composes: text-truncate;
   font-size: 0.8rem;
   color: var(--color-text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .trending-row {
@@ -348,5 +352,65 @@
 @keyframes spinner {
   to {
     transform: rotate(360deg);
+  }
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .artist-card {
+    min-width: 120px;
+  }
+
+  .artist-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .song-card {
+    min-width: 150px;
+  }
+
+  .song-details {
+    padding: 0.75rem;
   }
 }
