@@ -4,7 +4,7 @@
   padding: 2rem 1.5rem;
 }
 
-/* // Base styles for common elements */
+/* Base styles for common elements */
 .section-heading {
   font-weight: 600;
   color: var(--color-text-primary);
@@ -39,7 +39,7 @@
   margin-top: 1.5rem;
 }
 
-/* // Common button styles */
+/* Common button styles */
 .playlist-button-base {
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
@@ -105,7 +105,7 @@
   width: 30px;
 }
 
-/* // Table styles */
+/* Table styles */
 .playlist-table {
   width: 100%;
   border-collapse: separate;
@@ -159,7 +159,7 @@
   object-fit: cover;
 }
 
-/* // Common text styles */
+/* Common text styles */
 .text-truncate {
   white-space: nowrap;
   overflow: hidden;

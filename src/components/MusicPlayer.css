@@ -232,7 +232,7 @@
 
 .visualizer .bar {
   width: 3px;
-  background-color: var(--color-primary);
+  background-color: var(--color-accent-primary);
   animation: sound 0ms -800ms linear infinite alternate;
   height: 30%;
 }
@@ -307,10 +307,5 @@
   
   .player-volume-slider {
     width: 60px;
-  }
-  
-  .player-option-button.queue,
-  .player-option-button.repeat {
-    display: none;
   }
 }
